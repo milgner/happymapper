@@ -416,18 +416,21 @@ module HappyMapper
 
           obj = options[:update] ? options[:update] : new
 
+          # now that we have an object, its properties may belong to a different namespace
+          local_ns = obj.class.namespace || namespace
+
           attributes.each do |attr|
-            value = attr.from_xml_node(n, namespace, namespaces)
+            value = attr.from_xml_node(n, local_ns, namespaces)
             value = attr.default if value.nil?
             obj.send("#{attr.method_name}=", value)
           end
 
           elements.each do |elem|
-            obj.send("#{elem.method_name}=",elem.from_xml_node(n, namespace, namespaces))
+            obj.send("#{elem.method_name}=",elem.from_xml_node(n, local_ns, namespaces))
           end
 
           if @content
-            obj.send("#{@content.method_name}=",@content.from_xml_node(n, namespace, namespaces))
+            obj.send("#{@content.method_name}=",@content.from_xml_node(n, local_ns, namespaces))
           end
 
           # If the HappyMapper class has the method #xml_value=,
