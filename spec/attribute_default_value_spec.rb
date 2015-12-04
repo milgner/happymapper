@@ -22,7 +22,7 @@ describe "Attribute Default Value" do
 
     context "when saving to xml" do
 
-      let(:expected_xml) { %{<?xml version="1.0"?>\n<meal/>\n} }
+      let(:expected_xml) { %{<?xml version="1.0" encoding="UTF-8"?>\n<meal/>\n} }
 
       it "the default value is not included" do
         meal = subject.new
@@ -38,7 +38,7 @@ describe "Attribute Default Value" do
         expect(meal.type).to_not eq default_meal_type
       end
 
-      let(:expected_xml) { %{<?xml version="1.0"?>\n<meal type="kosher"/>\n} }
+      let(:expected_xml) { %{<?xml version="1.0" encoding="UTF-8"?>\n<meal type="kosher"/>\n} }
 
       it "saves the new value to the xml" do
         meal = subject.new

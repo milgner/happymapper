@@ -199,7 +199,7 @@ describe "Saving #to_xml", "with xml namespaces" do
 
     let(:expected_xml) do
       <<-XML.gsub(/^\s*\|/, '')
-        |<?xml version="1.0"?>
+        |<?xml version="1.0" encoding="UTF-8"?>
         |<coffeemachine xmlns:coffee="http://coffee.org/Coffee/0.1" xmlns:beverage="http://beverages.org/Beverage/0.1">
         |  <beverage:beverage name="coffee"/>
         |</coffeemachine>

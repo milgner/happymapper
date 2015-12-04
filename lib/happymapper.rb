@@ -529,7 +529,7 @@ module HappyMapper
     #
     unless builder
       write_out_to_xml = true
-      builder = Nokogiri::XML::Builder.new
+      builder = Nokogiri::XML::Builder.new(encoding: 'UTF-8')
     end
 
     #
