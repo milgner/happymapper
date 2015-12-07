@@ -167,6 +167,7 @@ module HappyMapper
     # @see #element
     #
     def has_one(name, type, options={})
+      options[:namespace] ||= self.namespace
       element name, type, {:single => true}.merge(options)
     end
 
